@@ -1,0 +1,24 @@
+<div class="product-card">
+  <img [src]="productImage" alt="Product Image" />
+  <h2>{{ productName }}</h2>
+  <p>{{ productDescription }}</p>
+  <p>Price: ${{ productPrice }}</p>
+  <button (click)="addToCart()">Add to Cart</button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products; trackBy: trackByFn">
+      <td>{{ product.productName }}</td>
+      <td>{{ product.productDescription }}</td>
+      <td>{{ product.productPrice }}</td>
+    </tr>
+  </tbody>
+</table>
