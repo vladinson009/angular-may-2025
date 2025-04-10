@@ -6,7 +6,7 @@
   <div>
     <div>
       Increment Amount:
-      <input type="number" [(ngModel)]="incrementAmount" />
+      <input type="number" [(ngModel)]="incrementAmount" min="0" />
     </div>
     <div>
       <p class="negative" *ngIf="isNegative; else elseBlock">Negative</p>
