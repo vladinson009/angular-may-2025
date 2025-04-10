@@ -1,0 +1,21 @@
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  padding: 10px;
+  margin-bottom: 5px;
+}
+.even {
+  background-color: #f0f0f0;
+}
+.odd {
+  background-color: #ffffff;
+}
+.completed {
+  color: green;
+  text-decoration: line-through;
+}
+.pending {
+  color: red;
+}
