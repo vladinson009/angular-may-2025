@@ -14,9 +14,15 @@
 </form>
 <ul>
   <li
-    *ngFor="let task of sortedTasks; let i = index"
+    *ngFor="let task of sortedTasks; let i = index; trackBy: trackByFn"
     [ngClass]="getTaskClasses(task, i)"
     [ngStyle]="{ fontSize: task.priority * 10 + 'px' }"
+    [title]="
+      'Priority: ' +
+      task.priority +
+      ', Completed: ' +
+      (task.isCompleted ? 'Yes' : 'No')
+    "
   >
     <input
       type="checkbox"
@@ -24,10 +30,17 @@
       id="isDone"
       (click)="checkTodo(task)"
     />
-    {{ task.description }}
+    {{ task.description | uppercase }}
+    {{ task.description | truncate : 4 : false : "[...]" }}
   </li>
 </ul>
 <form (submit)="addTodo($event)">
   <input type="text" name="inputText" />
   <input type="submit" value="Add" />
 </form>
+
+<p>Short Date: {{ myDate | date : "short" }}</p>
+<p>USD (Symbol): {{ price | currency : "USD" }}</p>
+<p>
+  EUR (Symbol, 2 Digits): {{ price | currency : "EUR" : "symbol" : "1.2-3" }}
+</p>

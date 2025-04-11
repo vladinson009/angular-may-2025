@@ -1,6 +1,14 @@
-import { NgClass, NgFor, NgStyle } from '@angular/common';
+import {
+  CurrencyPipe,
+  DatePipe,
+  NgClass,
+  NgFor,
+  NgStyle,
+  UpperCasePipe,
+} from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import TruncatePipe from '../../pipes/truncate.pipe';
 interface Tasks {
   description: string;
   isCompleted: boolean;
@@ -8,16 +16,25 @@ interface Tasks {
 }
 @Component({
   selector: 'app-my-component',
-  imports: [NgFor, NgClass, NgStyle, FormsModule],
+  imports: [
+    NgFor,
+    NgClass,
+    NgStyle,
+    FormsModule,
+    DatePipe,
+    CurrencyPipe,
+    UpperCasePipe,
+    TruncatePipe,
+  ],
   templateUrl: './my-component.component.html',
   styleUrl: './my-component.component.css',
 })
 export class MyComponentComponent {
   tasks: Tasks[] = [
     {
-      description: 'Groccery Shopping',
+      description: 'Groccery Shopping !',
       isCompleted: false,
-      priority: 2,
+      priority: 5,
     },
     {
       description: 'Laundry',
@@ -84,4 +101,10 @@ export class MyComponentComponent {
       }
     });
   }
+
+  trackByFn(index: number, item: Tasks) {
+    return item.description;
+  }
+  myDate: Date = new Date();
+  price: number = 1234.567;
 }
