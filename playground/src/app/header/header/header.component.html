@@ -11,7 +11,7 @@
     <!-- Logged-in users -->
     <div class="user">
       <a routerLink="/tattoo/create">Add Tattoo</a>
-      <a id="logout" href="#">Logout</a>
+      <a id="logout" href="/logout" (click)="logout($event)">Logout</a>
     </div>
     } @else {
     <!-- Guest users -->
