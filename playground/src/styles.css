@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("../public/styles/dashboard.css");
+@import url("../public/styles/details.css");
+@import url("../public/styles/form.css");
+@import url("../public/styles/navigation.css");
+@import url("../public/styles/styles.css");

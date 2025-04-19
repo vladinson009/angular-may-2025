@@ -1,0 +1,21 @@
+<header>
+  <!-- Navigation -->
+  <a id="logo" routerLink="/"
+    ><img id="logo-img" src="./images/logo.png" alt="logo" />
+  </a>
+  <nav>
+    <a routerLink="/dashboard">Collection</a>
+
+    <!-- Logged-in users -->
+    <div class="user">
+      <a routerLink="/tattoo/create">Add Tattoo</a>
+      <a id="logout" href="#">Logout</a>
+    </div>
+
+    <!-- Guest users -->
+    <div class="guest">
+      <a routerLink="/users/login">Login</a>
+      <a routerLink="/users/register">Register</a>
+    </div>
+  </nav>
+</header>
