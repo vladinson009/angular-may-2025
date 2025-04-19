@@ -6,16 +6,20 @@
   <nav>
     <a routerLink="/dashboard">Collection</a>
 
+    @if (isLoggedIn()) {
+
     <!-- Logged-in users -->
     <div class="user">
       <a routerLink="/tattoo/create">Add Tattoo</a>
       <a id="logout" href="#">Logout</a>
     </div>
-
+    } @else {
     <!-- Guest users -->
     <div class="guest">
       <a routerLink="/users/login">Login</a>
       <a routerLink="/users/register">Register</a>
     </div>
+
+    }
   </nav>
 </header>
