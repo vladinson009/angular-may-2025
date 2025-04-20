@@ -8,9 +8,14 @@ import {
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 
-import { AUTH_ENDPOINTS } from '../constants';
+import { AUTH_ENDPOINTS, ERR_MESSAGES } from '../constants';
 
-import { AuthResponse, LoginService } from '../types/AuthService';
+import {
+  AuthResponse,
+  LocalStorageData,
+  LoginData,
+  RegisterData,
+} from '../types/AuthService';
 import { clearUserData, setUserData } from '../utils/userData';
 import { Router } from '@angular/router';
 
@@ -18,37 +23,43 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  #userData: WritableSignal<string> = signal('');
+  userData$: WritableSignal<LocalStorageData | null> = signal(null);
   #http = inject(HttpClient);
   #router = inject(Router);
-  #token: string = '';
-  readonly isLoggedIn = computed(() => this.#userData() !== '');
+  token: string = '';
+  readonly isLoggedIn = computed(() => this.userData$() !== null);
 
-  login(credentials: LoginService): Observable<AuthResponse> {
+  register(credentials: LoginData): Observable<AuthResponse> {
+    return this.#http
+      .post<AuthResponse>(AUTH_ENDPOINTS.register, credentials)
+      .pipe(tap((res) => this.#setUserData(res)));
+  }
+
+  login(credentials: LoginData): Observable<AuthResponse> {
     return this.#http
       .post<AuthResponse>(AUTH_ENDPOINTS.login, credentials)
-      .pipe(
-        tap((res) => {
-          const userData = setUserData(res);
-          this.#userData.set(userData);
-          this.#token = res.accessToken;
-        })
-      );
+      .pipe(tap((res) => this.#setUserData(res)));
   }
   logout() {
     return this.#http
       .get(AUTH_ENDPOINTS.logout, {
         headers: {
-          'X-Authorization': this.#token,
+          'X-Authorization': this.token,
         },
       })
       .pipe(
         tap(() => {
           clearUserData();
           this.#router.navigateByUrl('/');
-          this.#token = '';
-          this.#userData.set('');
+          this.token = '';
+          this.userData$.set(null);
         })
       );
+  }
+
+  #setUserData(res: AuthResponse) {
+    const userData = setUserData(res);
+    this.userData$.set(JSON.parse(userData));
+    this.token = res.accessToken;
   }
 }

@@ -1,7 +1,12 @@
 <section id="login">
   <div class="form">
     <h2>Login</h2>
-    <form (ngSubmit)="login(email.value, password.value)" class="login-form">
+    <div *ngIf="error">
+      <ul>
+        <li>{{ error }}</li>
+      </ul>
+    </div>
+    <form (ngSubmit)="login(email.value, password)" class="login-form">
       <input type="text" name="email" id="email" placeholder="email" #email />
       <input
         type="password"

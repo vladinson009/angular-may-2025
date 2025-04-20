@@ -1,22 +1,41 @@
 <section id="register">
   <div class="form">
     <h2>Register</h2>
-    <form class="register-form">
-      <input type="text" name="email" id="register-email" placeholder="email" />
+    <div *ngIf="formErrors.length > 0">
+      <ul>
+        <li *ngFor="let error of formErrors">{{ error }}</li>
+      </ul>
+    </div>
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="onRegister()"
+      class="register-form"
+    >
+      <input
+        type="text"
+        name="email"
+        id="register-email"
+        placeholder="email"
+        formControlName="email"
+      />
       <input
         type="password"
         name="password"
         id="register-password"
         placeholder="password"
+        formControlName="password"
       />
       <input
         type="password"
         name="re-password"
         id="repeat-password"
         placeholder="repeat password"
+        formControlName="repass"
       />
       <button type="submit">register</button>
-      <p class="message">Already registered? <a href="#">Login</a></p>
+      <p class="message">
+        Already registered? <a routerLink="/users/login">Login</a>
+      </p>
     </form>
   </div>
 </section>

@@ -9,3 +9,8 @@ export const AUTH_ENDPOINTS: AuthEndpoints = {
 };
 
 export const AUTH_DATA: string = 'authData';
+
+export const ERR_MESSAGES = {
+  invalidEmail: 'Email must be at least 3 characters long!',
+  invalidRepass: 'Passwords does not match!',
+};

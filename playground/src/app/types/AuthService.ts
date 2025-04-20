@@ -1,6 +1,9 @@
-export interface LoginService {
+export interface LoginData {
   email: string;
   password: string;
+}
+export interface RegisterData extends LoginData {
+  repass: string;
 }
 
 export interface LocalStorageData {
