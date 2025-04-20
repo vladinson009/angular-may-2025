@@ -3,3 +3,7 @@ export interface AuthEndpoints {
   register: string;
   logout: string;
 }
+export interface DataEndpoints {
+  getAll: string;
+  gallery: string;
+}

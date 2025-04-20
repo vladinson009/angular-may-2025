@@ -1,10 +1,9 @@
 export interface GalleryData {
   _ownerId: string;
-  title: string;
-  category: string;
-  maxLevel: string;
+  type: string;
   imageUrl: string;
-  summary: string;
+  description: string;
+  userType: string;
   _createdOn: number;
   _id: string;
 }

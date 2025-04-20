@@ -15,7 +15,7 @@ import {
   LocalStorageData,
   LoginData,
 } from '../types/AuthService';
-import { clearUserData, setUserData } from '../utils/userData';
+import { clearUserData, getUserData, setUserData } from '../utils/userData';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -59,5 +59,8 @@ export class AuthService {
     const userData = setUserData(res);
     this.userData$.set(JSON.parse(userData));
     this.token = res.accessToken;
+  }
+  getToken() {
+    return getUserData()?.token;
   }
 }

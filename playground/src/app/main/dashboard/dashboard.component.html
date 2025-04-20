@@ -5,11 +5,11 @@
   <h2>...Loading</h2>
   } @else { @for (item of data; track item._id) {
   <div class="tattoo">
-    <img [src]="item.imageUrl" [alt]="item.title" />
+    <img [src]="item.imageUrl" [alt]="item.type" />
     <div class="tattoo-info">
-      <h3 class="type">{{ item.title }}</h3>
+      <h3 class="type">{{ item.type }}</h3>
       <span>Uploaded by </span>
-      <p class="user-type">{{ item.category }}</p>
+      <p class="user-type">{{ item.userType }}</p>
       <a class="details-btn" [routerLink]="['/tattoo/details', item._id]"
         >Learn More</a
       >
