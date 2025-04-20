@@ -8,13 +8,12 @@ import {
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 
-import { AUTH_ENDPOINTS, ERR_MESSAGES } from '../constants';
+import { AUTH_ENDPOINTS } from '../constants';
 
 import {
   AuthResponse,
   LocalStorageData,
   LoginData,
-  RegisterData,
 } from '../types/AuthService';
 import { clearUserData, setUserData } from '../utils/userData';
 import { Router } from '@angular/router';
@@ -34,7 +33,6 @@ export class AuthService {
       .post<AuthResponse>(AUTH_ENDPOINTS.register, credentials)
       .pipe(tap((res) => this.#setUserData(res)));
   }
-
   login(credentials: LoginData): Observable<AuthResponse> {
     return this.#http
       .post<AuthResponse>(AUTH_ENDPOINTS.login, credentials)

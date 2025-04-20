@@ -7,6 +7,9 @@ export const AUTH_ENDPOINTS: AuthEndpoints = {
   register: authUrl + '/register',
   logout: authUrl + '/logout',
 };
+export const DATA_ENDPOINTS: { getAll: string } = {
+  getAll: baseUrl + '/data/games?sortBy=_createdOn%20desc',
+};
 
 export const AUTH_DATA: string = 'authData';
 

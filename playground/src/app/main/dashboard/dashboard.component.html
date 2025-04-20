@@ -1,33 +1,23 @@
 <h2>Collection</h2>
 <section id="tattoos">
   <!-- Display a div with information about every post (if any)-->
+  @if(isLoading){
+  <h2>...Loading</h2>
+  } @else { @for (item of data; track item._id) {
   <div class="tattoo">
-    <img src="/images/mad bunny.png" alt="example1" />
+    <img [src]="item.imageUrl" [alt]="item.title" />
     <div class="tattoo-info">
-      <h3 class="type">The Mad Bunny</h3>
+      <h3 class="type">{{ item.title }}</h3>
       <span>Uploaded by </span>
-      <p class="user-type">Tattoo Artist</p>
-      <a class="details-btn" href="#">Learn More</a>
+      <p class="user-type">{{ item.category }}</p>
+      <a class="details-btn" [routerLink]="['/tattoo/details', item._id]"
+        >Learn More</a
+      >
     </div>
   </div>
-  <div class="tattoo">
-    <img src="/images/japanese dragon.png" alt="example2" />
-    <div class="tattoo-info">
-      <h3 class="type">Japanese Dragon</h3>
-      <span>Uploaded by </span>
-      <p class="user-type">Tattoo Enthusiast</p>
-      <a class="details-btn" href="#">Learn More</a>
-    </div>
-  </div>
-  <div class="tattoo">
-    <img src="/images/trash polka.png" alt="example3" />
-    <div class="tattoo-info">
-      <h3 class="type">Trash Polka</h3>
-      <span>Uploaded by </span>
-      <p class="user-type">First Time in Tattoo</p>
-      <a class="details-btn" href="#">Learn More</a>
-    </div>
-  </div>
+
+  } @empty {
+  <!-- Display an h2 if there are no posts -->
+  <h2 id="no-tattoo">Collection is empty, be the first to contribute</h2>
+  } }
 </section>
-<!-- Display an h2 if there are no posts -->
-<h2 id="no-tattoo">Collection is empty, be the first to contribute</h2>

@@ -21,8 +21,8 @@ export const routes: Routes = [
     path: 'tattoo',
     children: [
       { path: 'create', component: CreateComponent },
-      { path: 'edit:tattooId', component: EditComponent },
-      { path: 'details:tattooId', component: DetailsComponent },
+      { path: 'edit/:tattooId', component: EditComponent },
+      { path: 'details/:tattooId', component: DetailsComponent },
     ],
   },
 ];
