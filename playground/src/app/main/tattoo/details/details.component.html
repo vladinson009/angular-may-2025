@@ -1,25 +1,40 @@
 <section id="details">
   <div id="details-wrapper">
-    <img id="details-img" src="./images/japanese dragon.png" alt="example1" />
+    <img id="details-img" [src]="data.imageUrl" [alt]="data.type" />
     <div>
       <div id="info-wrapper">
-        <p id="details-type">Japanese Dragon</p>
+        <p id="details-type">{{ data.type }}</p>
         <div id="details-description">
-          <p id="user-type">Tattoo Artist</p>
-          <p id="description">
-            A majestic Japanese dragon wrapped in swirling clouds and flames,
-            symbolizing strength, wisdom, and protection.
-          </p>
+          <p id="user-type">{{ data.userType }}</p>
+          <p id="description">{{ data.description }}</p>
         </div>
-        <h3>Like tattoo:<span id="like">0</span></h3>
-        <!--Edit and Delete are only for creator-->
-        <div id="action-buttons">
-          <a href="#" id="edit-btn">Edit</a>
-          <a href="#" id="delete-btn">Delete</a>
+        <h3>
+          Like tattoo:<span id="like">{{ likes }}</span>
+        </h3>
 
+        @if (isUser && !isLoading){
+        <div id="action-buttons">
+          <!--Edit and Delete are only for creator-->
+          @if(isOwner){
+          <a routerLink="/tattoo/edit/{{ data._id }}" id="edit-btn">Edit</a>
+          <a
+            (click)="onDelete($event)"
+            href="/tattoo/delete/{{ data._id }}"
+            id="delete-btn"
+            >Delete</a
+          >
+          } @else {
           <!--Bonus - Only for logged-in users ( not authors )-->
-          <a href="#" id="like-btn">Like</a>
+          @if(!isLiked){
+          <a
+            (click)="onLike($event)"
+            href="/tattoo/like/{{ data._id }}"
+            id="like-btn"
+            >Like</a
+          >
+          } }
         </div>
+        }
       </div>
     </div>
   </div>
