@@ -39,20 +39,14 @@ export class AuthService {
       .pipe(tap((res) => this.#setUserData(res)));
   }
   logout() {
-    return this.#http
-      .get(AUTH_ENDPOINTS.logout, {
-        headers: {
-          'X-Authorization': this.token,
-        },
+    return this.#http.get(AUTH_ENDPOINTS.logout).pipe(
+      tap(() => {
+        clearUserData();
+        this.#router.navigateByUrl('/');
+        this.token = '';
+        this.userData$.set(null);
       })
-      .pipe(
-        tap(() => {
-          clearUserData();
-          this.#router.navigateByUrl('/');
-          this.token = '';
-          this.userData$.set(null);
-        })
-      );
+    );
   }
 
   #setUserData(res: AuthResponse) {
