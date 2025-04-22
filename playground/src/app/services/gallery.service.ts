@@ -1,27 +1,37 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { DATA_ENDPOINTS } from '../constants';
+import { DATA_ENDPOINTS, LIKES_ENDPOINTS } from '../constants';
 import { Observable } from 'rxjs';
 import { GalleryData } from '../types/Data';
-import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GalleryService {
   #http = inject(HttpClient);
-  #authServie = inject(AuthService);
+
+  getById(id: string | null): Observable<GalleryData> {
+    return this.#http.get<GalleryData>(DATA_ENDPOINTS.gallery + `/${id}`);
+  }
   getAll(): Observable<GalleryData[]> {
     return this.#http.get<GalleryData[]>(DATA_ENDPOINTS.getAll);
   }
-  create(credentials: Partial<GalleryData>): Observable<GalleryData> {
-    const token = this.#authServie.getToken();
-    let currentHeaders = new HttpHeaders();
-    if (token) {
-      currentHeaders = currentHeaders.set('X-Authorization', token);
-    }
-    return this.#http.post<GalleryData>(DATA_ENDPOINTS.gallery, credentials, {
-      headers: currentHeaders,
-    });
+  create(body: Partial<GalleryData>): Observable<GalleryData> {
+    return this.#http.post<GalleryData>(DATA_ENDPOINTS.gallery, body);
+  }
+  updateById(id: string, body: GalleryData): Observable<GalleryData> {
+    return this.#http.put<GalleryData>(DATA_ENDPOINTS.gallery + `/${id}`, body);
+  }
+  deleteById(id: string): Observable<GalleryData> {
+    return this.#http.delete<GalleryData>(DATA_ENDPOINTS.gallery + `/${id}`);
+  }
+  likeById(tattooId: string) {
+    return this.#http.post(LIKES_ENDPOINTS.likes, { tattooId });
+  }
+  getLikes(tattooId: string) {
+    return this.#http.get(LIKES_ENDPOINTS.getLikes(tattooId));
+  }
+  isLiked(tattooId: string, userId: string) {
+    return this.#http.get(LIKES_ENDPOINTS.isLiked(tattooId, userId));
   }
 }
