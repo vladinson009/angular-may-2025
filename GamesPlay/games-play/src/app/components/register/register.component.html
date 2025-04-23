@@ -1,27 +1,41 @@
 <section id="register-page" class="content auth">
-  <form id="register">
+  <form id="register" [formGroup]="registerForm" (ngSubmit)="onRegister()">
     <div class="container">
       <div class="brand-logo"></div>
       <h1>Register</h1>
-
+      <app-form-error [errors]="errors" />
       <label for="email">Email:</label>
       <input
         type="email"
         id="email"
         name="email"
         placeholder="maria@email.com"
+        formControlName="email"
       />
 
-      <label for="pass">Password:</label>
-      <input type="password" name="password" id="register-password" />
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        name="password"
+        id="register-password"
+        formControlName="password"
+      />
 
-      <label for="con-pass">Confirm Password:</label>
-      <input type="password" name="confirm-password" id="confirm-password" />
+      <label for="confirm-password">Confirm Password:</label>
+      <input
+        type="password"
+        name="confirm-password"
+        id="confirm-password"
+        formControlName="repeat password"
+      />
 
       <input class="btn submit" type="submit" value="Register" />
 
       <p class="field">
-        <span>If you already have profile click <a href="#">here</a></span>
+        <span
+          >If you already have profile click
+          <a routerLink="/users/login">here</a></span
+        >
       </p>
     </div>
   </form>

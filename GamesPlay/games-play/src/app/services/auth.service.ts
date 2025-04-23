@@ -36,15 +36,16 @@ export class AuthService {
     return this.#http.post<UserData>(AUTH_ENDPOINTS.login, credentials).pipe(
       tap((res) => this.#onAuthSuccess(res, true)),
       catchError((err) => {
-        console.log('errorororo');
-
         return throwError(() => err);
       })
     );
   }
   register(credentials: UserCredentials): Observable<UserData> {
-    return this.#http
-      .post<UserData>(AUTH_ENDPOINTS.register, credentials)
-      .pipe(tap((res) => this.#onAuthSuccess(res, true)));
+    return this.#http.post<UserData>(AUTH_ENDPOINTS.register, credentials).pipe(
+      tap((res) => this.#onAuthSuccess(res, true)),
+      catchError((err) => {
+        return throwError(() => err);
+      })
+    );
   }
 }
