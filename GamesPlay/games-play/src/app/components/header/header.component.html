@@ -1,17 +1,17 @@
 <header>
   <!-- Navigation -->
-  <h1><a class="home" href="#">GamesPlay</a></h1>
+  <h1><a class="home" routerLink="/">GamesPlay</a></h1>
   <nav>
-    <a href="#">All games</a>
+    <a routerLink="/games/catalogue">All games</a>
     <!-- Logged-in users -->
     <div id="user">
-      <a href="#">Create Game</a>
+      <a routerLink="/games/create">Create Game</a>
       <a href="#">Logout</a>
     </div>
     <!-- Guest users -->
     <div id="guest">
-      <a href="#">Login</a>
-      <a href="#">Register</a>
+      <a routerLink="/users/login">Login</a>
+      <a routerLink="/users/register">Register</a>
     </div>
   </nav>
 </header>
