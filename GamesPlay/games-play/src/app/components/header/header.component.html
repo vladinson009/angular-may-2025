@@ -3,15 +3,18 @@
   <h1><a class="home" routerLink="/">GamesPlay</a></h1>
   <nav>
     <a routerLink="/games/catalogue">All games</a>
+    @if(isLogged) {
     <!-- Logged-in users -->
     <div id="user">
       <a routerLink="/games/create">Create Game</a>
-      <a href="#">Logout</a>
+      <a (click)="onLogout($event)" href="/users/logout">Logout</a>
     </div>
+    } @else {
     <!-- Guest users -->
     <div id="guest">
       <a routerLink="/users/login">Login</a>
       <a routerLink="/users/register">Register</a>
     </div>
+    }
   </nav>
 </header>
