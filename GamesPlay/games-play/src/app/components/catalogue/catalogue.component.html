@@ -1,31 +1,23 @@
 <section id="catalog-page">
   <h1>All Games</h1>
   <!-- Display div: with information about every game (if any) -->
+  @if (isLoading) {
+  <app-loading-spinner />
+  } @else { @if (error) {
+  <span class="error">{{ error }} </span>
+  } @for (item of items; track item._id) {
   <div class="allGames">
     <div class="allGames-info">
-      <img src="./images/avatar-1.jpg" />
-      <h6>Action</h6>
-      <h2>Cover Fire</h2>
-      <a href="#" class="details-button">Details</a>
+      <img [src]="item.imageUrl" />
+      <h6>{{ item.category }}</h6>
+      <h2>{{ item.title }}</h2>
+      <a [routerLink]="['/games', 'details', item._id]" class="details-button"
+        >Details</a
+      >
     </div>
   </div>
-  <div class="allGames">
-    <div class="allGames-info">
-      <img src="./images/avatar-1.jpg" />
-      <h6>Action</h6>
-      <h2>Zombie lang</h2>
-      <a href="#" class="details-button">Details</a>
-    </div>
-  </div>
-  <div class="allGames">
-    <div class="allGames-info">
-      <img src="./images/avatar-1.jpg" />
-      <h6>Action</h6>
-      <h2>MineCraft</h2>
-      <a href="#" class="details-button">Details</a>
-    </div>
-  </div>
-
+  } @empty {
   <!-- Display paragraph: If there is no games  -->
   <h3 class="no-articles">No articles yet</h3>
+  } }
 </section>
