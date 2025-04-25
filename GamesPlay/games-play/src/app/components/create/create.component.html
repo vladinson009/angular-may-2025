@@ -1,42 +1,50 @@
 <section id="create-page" class="auth">
-  <form id="create">
+  <form [formGroup]="createForm" id="create" (ngSubmit)="onCreate()">
     <div class="container">
       <h1>Create Game</h1>
-      <label for="leg-title">Legendary title:</label>
+      <label for="leg-title">Legendary title: {{ errors.title }}</label>
       <input
         type="text"
         id="title"
         name="title"
         placeholder="Enter game title..."
+        formControlName="title"
       />
 
-      <label for="category">Category:</label>
+      <label for="category">Category: {{ errors.category }}</label>
       <input
         type="text"
         id="category"
         name="category"
         placeholder="Enter game category..."
+        formControlName="category"
       />
 
-      <label for="levels">MaxLevel:</label>
+      <label for="levels">MaxLevel: {{ errors.maxLevel }}</label>
       <input
         type="number"
         id="maxLevel"
         name="maxLevel"
         min="1"
         placeholder="1"
+        formControlName="maxLevel"
       />
 
-      <label for="game-img">Image:</label>
+      <label for="game-img">Image: {{ errors.imageUrl }}</label>
       <input
         type="text"
         id="imageUrl"
         name="imageUrl"
         placeholder="Upload a photo..."
+        formControlName="imageUrl"
       />
 
-      <label for="summary">Summary:</label>
-      <textarea name="summary" id="summary"></textarea>
+      <label for="summary">Summary: {{ errors.summary }}</label>
+      <textarea
+        name="summary"
+        id="summary"
+        formControlName="summary"
+      ></textarea>
       <input class="btn submit" type="submit" value="Create Game" />
     </div>
   </form>
