@@ -1,20 +1,18 @@
 <section id="game-details">
+  @if (isLoading) {
+  <app-loading-spinner />
+  } @else {
+
   <h1>Game Details</h1>
   <div class="info-section">
     <div class="game-header">
-      <img class="game-img" src="images/MineCraft.png" />
-      <h1>Bright</h1>
-      <span class="levels">MaxLevel: 4</span>
-      <p class="type">Action, Crime, Fantasy</p>
+      <img class="game-img" [src]="item.imageUrl" />
+      <h1>{{ item.title }}</h1>
+      <span class="levels">MaxLevel: {{ item.maxLevel }}</span>
+      <p class="type">{{ item.category }}</p>
     </div>
 
-    <p class="text">
-      Set in a world where fantasy creatures live side by side with humans. A
-      human cop is forced to work with an Orc to find a weapon everyone is
-      prepared to kill for. Set in a world where fantasy creatures live side by
-      side with humans. A human cop is forced to work with an Orc to find a
-      weapon everyone is prepared to kill for.
-    </p>
+    <p class="text">{{ item.summary }}</p>
 
     <!-- Bonus ( for Guests and Users ) -->
     <div class="details-comments">
@@ -32,11 +30,18 @@
       <p class="no-comment">No comments.</p>
     </div>
 
+    @if(isOwner){
     <!-- Edit/Delete buttons ( Only for creator of this game )  -->
     <div class="buttons">
-      <a href="#" class="button">Edit</a>
-      <a href="#" class="button">Delete</a>
+      <a [routerLink]="['/games', 'edit', item._id]" class="button">Edit</a>
+      <a
+        href="/games/delete/{{ item._id }}"
+        (click)="onDelete($event)"
+        class="button"
+        >Delete</a
+      >
     </div>
+    }
   </div>
 
   <!-- Bonus -->
@@ -48,4 +53,5 @@
       <input class="btn submit" type="submit" value="Add Comment" />
     </form>
   </article>
+  }
 </section>
