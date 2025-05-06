@@ -21,4 +21,18 @@ export class DataService {
   create(body: CreateFormShape): Observable<GalleryShape> {
     return this.#http.post<GalleryShape>(COLLECTION_ENDPOINTS.collection, body);
   }
+  getById(gameId: string): Observable<GalleryShape> {
+    return this.#http.get<GalleryShape>(
+      COLLECTION_ENDPOINTS.collection + `/${gameId}`
+    );
+  }
+  editById(gameId: string, body: CreateFormShape): Observable<GalleryShape> {
+    return this.#http.put<GalleryShape>(
+      COLLECTION_ENDPOINTS.collection + `/${gameId}`,
+      body
+    );
+  }
+  deleteById(gameId: string): Observable<{}> {
+    return this.#http.delete(COLLECTION_ENDPOINTS.collection + `/${gameId}`);
+  }
 }
