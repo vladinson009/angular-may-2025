@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { GalleryShape } from '../../types/Data';
-import { LoadingSpinnerComponent } from '../../loading-spinner/loading-spinner.component';
+import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.component';
 import { RouterLink } from '@angular/router';
 
 @Component({
