@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { GalleryShape } from '../../types/Data';
 import { RouterLink } from '@angular/router';
-import { LoadingSpinnerComponent } from '../../loading-spinner/loading-spinner.component';
+import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.component';
 
 @Component({
   selector: 'app-catalogue',
