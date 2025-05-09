@@ -1,0 +1,31 @@
+@import url(../public/reset.css);
+@import url(../public/layout.css);
+@import url(../public/typography.css);
+@import url(../public/responsive.css);
+
+body {
+  max-width: 1366px;
+  margin: auto;
+  position: relative;
+  min-height: 100vh;
+}
+
+h2 {
+  text-align: center;
+  border-bottom: 1px dashed #999;
+}
+
+span {
+  font-weight: bold;
+}
+
+button {
+  background-color: #4ebced;
+  color: white;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+/* main  */
