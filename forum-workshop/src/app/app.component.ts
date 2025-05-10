@@ -7,7 +7,7 @@ import { AsideComponent } from './aside/aside.component';
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, FooterComponent, MainComponent, AsideComponent],
+  imports: [HeaderComponent, FooterComponent, RouterOutlet, AsideComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
