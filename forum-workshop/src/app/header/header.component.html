@@ -5,25 +5,41 @@
     </div>
     <div class="mini-navbar">
       <ul>
+        @if (isUser) {
         <li>
-          <a href="#">Login</a>
+          <a routerLink="/profile" routerLinkActive="active"
+            >{{ username }}'s profile</a
+          >
         </li>
         <li>
-          <a href="#">Register</a>
+          <a routerLink="/logout" routerLinkActive="active">Logout</a>
         </li>
+        } @else {
+        <li>
+          <a routerLink="/login" routerLinkActive="active">Login</a>
+        </li>
+        <li>
+          <a routerLink="/register" routerLinkActive="active">Register</a>
+        </li>
+        }
       </ul>
     </div>
   </div>
   <nav>
     <ul>
       <li>
-        <a href="#">Home</a>
+        <a
+          routerLink="/home"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Home</a
+        >
       </li>
       <li>
-        <a href="#">Themes</a>
+        <a routerLink="/themes" routerLinkActive="active">Themes</a>
       </li>
       <li>
-        <a href="#">New Theme</a>
+        <a routerLink="/add-theme" routerLinkActive="active">New Theme</a>
       </li>
     </ul>
   </nav>

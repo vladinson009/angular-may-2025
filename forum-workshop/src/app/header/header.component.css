@@ -78,3 +78,6 @@ nav {
   border-left: 1px solid lightgrey;
   padding-left: 0.5em;
 }
+header a.active {
+  color: rgb(12, 225, 104);
+}
