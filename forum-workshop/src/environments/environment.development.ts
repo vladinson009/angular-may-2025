@@ -6,5 +6,6 @@ export const environment: EnvironmentShape = {
   REST_ENDPOINTS: {
     themes: `${baseUrl}/themes`,
     recentFivePosts: `${baseUrl}/posts?limit=5`,
+    logout: `${baseUrl}/logout`,
   },
 };
