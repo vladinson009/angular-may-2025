@@ -3,12 +3,11 @@
   padding: 0.5rem 0;
 }
 
-.aside-theme + .aside-theme {
-  border-top: dashed 1px #999;
-}
-
 .aside-theme p {
   text-align: right;
+}
+.aside-theme {
+  border-top: dashed 1px #999;
 }
 
 .aside-theme a {
