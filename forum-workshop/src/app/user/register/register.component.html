@@ -1,5 +1,11 @@
 <div class="container">
-  <form [formGroup]="registerForm" class="register" action="" method="post">
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="onRegister()"
+    class="register"
+    action=""
+    method="post"
+  >
     <fieldset>
       <h2>Registration Form</h2>
 

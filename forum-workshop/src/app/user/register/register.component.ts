@@ -10,6 +10,7 @@ import { RouterLink } from '@angular/router';
 import { customEmailValidator } from '../../validators/emailValidator';
 import { CommonModule } from '@angular/common';
 import { matchPassword } from '../../validators/matchPassword';
+import { CreateUserShape, UserShape } from '../../types/User';
 
 @Component({
   selector: 'app-register',
@@ -45,5 +46,14 @@ export class RegisterComponent {
         }
       ),
     });
+  }
+  onRegister() {
+    const body: CreateUserShape = {
+      username: this.registerForm.value.username,
+      email: this.registerForm.value.email,
+      password: this.registerForm.value.passwords.password,
+      rePassword: this.registerForm.value.passwords.rePassword,
+    };
+    this.#authService.register(body).subscribe();
   }
 }
