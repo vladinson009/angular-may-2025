@@ -10,6 +10,7 @@ import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { authGuard } from './auth.guard';
+import { EditComponent } from './profile/edit/edit.component';
 
 export const routes: Routes = [
   {
@@ -19,8 +20,17 @@ export const routes: Routes = [
   },
   {
     path: 'profile',
-    component: ProfileComponent,
     canActivate: [authGuard],
+    children: [
+      {
+        path: '',
+        component: ProfileComponent,
+      },
+      {
+        path: 'edit',
+        component: EditComponent,
+      },
+    ],
   },
   {
     path: 'themes',
@@ -52,6 +62,12 @@ export const routes: Routes = [
     path: '404',
     component: NotFoundComponent,
   },
-  { path: 'theme/:themeId', component: ThemeContentComponent },
-  { path: '**', component: NotFoundComponent },
+  {
+    path: 'theme/:themeId',
+    component: ThemeContentComponent,
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
+  },
 ];
