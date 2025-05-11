@@ -5,6 +5,8 @@ import { ThemesShape } from '../types/Themes';
 import { DatePipe } from '@angular/common';
 import { HomeComponent } from '../home/home.component';
 import { AuthService } from '../services/auth.service';
+import { Observable } from 'rxjs';
+import { UserShape } from '../types/User';
 
 @Component({
   selector: 'app-theme-content',
@@ -17,7 +19,7 @@ export class ThemeContentComponent implements OnInit {
   #authService = inject(AuthService);
   #themeService = inject(ThemeService);
   theme = {} as ThemesShape;
-  isUser: boolean = this.#authService.isLogged;
+  isUser: Observable<UserShape> = this.#authService.isAuthenticated$;
   ngOnInit(): void {
     this.#route.paramMap.subscribe((params) => {
       const themeId: string | null = params.get('themeId');
