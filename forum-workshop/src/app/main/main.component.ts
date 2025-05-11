@@ -16,7 +16,7 @@ import { AuthService } from '../services/auth.service';
 export class MainComponent implements OnInit {
   #themeService = inject(ThemeService);
   #authService = inject(AuthService);
-  isUser = this.#authService.isLogged;
+  isUser = this.#authService.isAuthenticated$;
   themes: ThemesShape[] = [];
 
   ngOnInit(): void {
