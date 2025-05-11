@@ -40,7 +40,7 @@
         <button type="button" (click)="onCancel()" class="cancel">
           Cancel
         </button>
-        <button class="public">Post</button>
+        <button [disabled]="themeForm.invalid" class="public">Post</button>
       </div>
     </form>
   </div>
