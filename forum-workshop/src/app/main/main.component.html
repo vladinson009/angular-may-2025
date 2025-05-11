@@ -1,5 +1,9 @@
 <div class="container">
   <main>
+    @if (!isUser) {
+    <app-home />
+
+    }
     <div class="theme-title">
       <!-- theme component  -->
       @for (item of themes; track item._id) {
