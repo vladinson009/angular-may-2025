@@ -1,3 +1,6 @@
+@if (!isUser) {
+<app-home />
+}
 <div class="container">
   <!-- theme content  -->
   <div class="theme-content">
@@ -5,13 +8,20 @@
     <div class="theme-title">
       <div class="theme-name-wrapper">
         <div class="theme-name">
-          <h2>Angular 10</h2>
-          <p>Date: <time>2020-10-10 12:08:28</time></p>
+          <h2>{{ theme.themeName }}</h2>
+          <p>
+            Date: <time>{{ theme.updatedAt | date }}</time>
+          </p>
         </div>
         <div class="subscribers">
-          <p>Subscribers: <span>456</span></p>
-          <!-- <button class="subscribe">Subscribe</button>
-                        <button class="unsubscribe">Unsubscribe</button> -->
+          <p>
+            Subscribers: <span>{{ theme.subscribers.length }}</span>
+          </p>
+          @if (isUser) {
+
+          <button class="subscribe">Subscribe</button>
+          <button class="unsubscribe">Unsubscribe</button>
+          }
         </div>
       </div>
     </div>
@@ -40,29 +50,15 @@
         </div>
       </div>
       <div class="footer">
-        <!-- <i class="fas fa-thumbs-up"></i>
-                    <i class="fas fa-thumbs-down"></i> -->
+        @if (isUser) {
+
+        <i class="fas fa-thumbs-up"></i>
+        <i class="fas fa-thumbs-down"></i>
+        }
         <p><span>5</span> likes</p>
       </div>
     </div>
-    <div class="comment">
-      <header class="header">
-        <p><span>Mark</span> posted on <time>2020-10-10 14:28:11</time></p>
-      </header>
-      <div class="comment-main">
-        <div class="userdetails">
-          <img src="/profile.png" alt="avatar" />
-        </div>
-        <div class="post-content">
-          <p>Lorem ipsum dolor sit amet consectetur</p>
-        </div>
-      </div>
-      <div class="footer">
-        <!-- <i class="fas fa-thumbs-up"></i>
-                    <i class="fas fa-thumbs-down"></i> -->
-        <p><span>3</span> likes</p>
-      </div>
-    </div>
+    @if(isUser){
     <div class="answer-comment">
       <p><span>currentUser</span> comment:</p>
       <div class="answer">
@@ -72,5 +68,6 @@
         </form>
       </div>
     </div>
+    }
   </div>
 </div>
