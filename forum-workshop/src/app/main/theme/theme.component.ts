@@ -1,9 +1,10 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input, OnInit } from '@angular/core';
 import { ThemesShape } from '../../types/Themes';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-theme',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './theme.component.html',
   styleUrl: './theme.component.css',
 })
