@@ -8,3 +8,9 @@ export interface UserShape {
   created_at: Date;
   updatedAt: Date;
 }
+export interface CreateUserShape {
+  username?: string;
+  email: string;
+  password: string;
+  rePassword?: string;
+}

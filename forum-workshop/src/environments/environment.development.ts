@@ -7,5 +7,8 @@ export const environment: EnvironmentShape = {
     themes: `${baseUrl}/themes`,
     recentFivePosts: `${baseUrl}/posts?limit=5`,
     logout: `${baseUrl}/logout`,
+    login: `${baseUrl}/login`,
+    register: `${baseUrl}/register`,
+    getToken: `${baseUrl}/users/profile`,
   },
 };

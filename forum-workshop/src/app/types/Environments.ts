@@ -3,5 +3,8 @@ export interface EnvironmentShape {
     themes: string;
     recentFivePosts: string;
     logout: string;
+    login: string;
+    register: string;
+    getToken: string;
   };
 }
