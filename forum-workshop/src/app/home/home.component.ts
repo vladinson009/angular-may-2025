@@ -1,5 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { Observable } from 'rxjs';
+import { UserShape } from '../types/User';
 
 @Component({
   selector: 'app-home',
@@ -9,5 +11,5 @@ import { AuthService } from '../services/auth.service';
 })
 export class HomeComponent {
   #authService = inject(AuthService);
-  isUser: boolean = this.#authService.isLogged;
+  isUser: Observable<UserShape> = this.#authService.isAuthenticated$;
 }
