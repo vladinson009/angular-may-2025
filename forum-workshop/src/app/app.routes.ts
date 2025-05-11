@@ -9,6 +9,7 @@ import { NewThemeComponent } from './new-theme/new-theme.component';
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
   {
@@ -19,6 +20,7 @@ export const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'themes',
@@ -31,6 +33,7 @@ export const routes: Routes = [
   {
     path: 'add-theme',
     component: NewThemeComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'login',
@@ -43,9 +46,12 @@ export const routes: Routes = [
   {
     path: 'logout',
     component: LogoutComponent,
+    canActivate: [authGuard],
   },
   {
     path: '404',
     component: NotFoundComponent,
   },
+  { path: 'theme/:themeId', component: ThemeContentComponent },
+  { path: '**', component: NotFoundComponent },
 ];
