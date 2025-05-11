@@ -92,5 +92,9 @@ p.error {
 }
 
 .input-error {
-  border-left-color: red;
+  border: none;
+  border-left-color: none;
+}
+.submitBtn {
+  background-color: gray;
 }
