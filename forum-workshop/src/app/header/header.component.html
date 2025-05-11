@@ -5,7 +5,7 @@
     </div>
     <div class="mini-navbar">
       <ul>
-        @if (isUser) {
+        @if (username) {
         <li>
           <a routerLink="/profile" routerLinkActive="active"
             >{{ username }}'s profile</a
@@ -22,6 +22,9 @@
           <a routerLink="/register" routerLinkActive="active">Register</a>
         </li>
         }
+        <li>
+          <a routerLink="/profile/edit">Edit Profile</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -42,5 +45,9 @@
         <a routerLink="/add-theme" routerLinkActive="active">New Theme</a>
       </li>
     </ul>
+    @if(errorMessage){
+    <p class="notification error-message">{{ errorMessage }}</p>
+
+    }
   </nav>
 </header>
